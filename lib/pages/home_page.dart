@@ -6,13 +6,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Learning'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Learning'),
+          ),
+          body: Center(
+            child: Container(
+              child: Text('Hello World'),
+            ),
           ),
         ),
       ),

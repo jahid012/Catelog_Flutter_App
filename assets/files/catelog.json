@@ -1,0 +1,28 @@
+{
+    "products":[
+        {
+            "id"    : 1,
+            "name"  : "Gallexy433Ultra",
+            "desc"  : "Learn Flutter in Just ",
+            "price" : 34,
+            "color" : "#ffffff",
+            "image" : "https://waltonbd.com/image/catalog/category-banner/mobile/smart-phone-half-block.jpg"
+        },
+        {
+            "id"    : 2,
+            "name"  : "Gallexy43Ultra",
+            "desc"  : "Learn Flutter in Just 8 Hours ",
+            "price" : 34,
+            "color" : "#ffffff",
+            "image" : "https://waltonbd.com/image/catalog/new_website/landing-banner/landing-page-image-02.jpg"
+        },
+        {
+            "id"    : 3,
+            "name"  : "Gallexy43Ultra",
+            "desc"  : "Learn Flutter in Just 8 Course",
+            "price" : 34,
+            "color" : "#ffffff",
+            "image" : "https://waltonbd.com/image/catalog/new_website/landing-banner/landing-page-image-02.jpg"
+        }
+    ]
+}

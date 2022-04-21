@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learning/models/catelog.dart';
+import 'package:learning/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/drawer.dart';
 import '../widgets/item_widget.dart';
@@ -36,52 +38,69 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Learning'),
+          body: SafeArea(
+        child: Container(
+          child: Padding(
+            padding: Vx.m32,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CatelogHeader(),
+                if (CatelogModel.items != null && CatelogModel.items.isNotEmpty)
+                  CatelogList().expand()
+                else
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  )
+              ],
+            ),
+          ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: (CatelogModel.items != null && CatelogModel.items.isNotEmpty)
-              ? GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15),
-                  itemBuilder: (context, index) {
-                    final item = CatelogModel.items[index];
-                    return Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        clipBehavior: Clip.antiAlias,
-                        child: GridTile(
-                          header: Container(
-                            child: Text(
-                              item.name,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            decoration: BoxDecoration(color: Colors.deepOrange),
-                            padding: const EdgeInsets.all(10.0),
-                          ),
-                          child: Image.network(item.image),
-                          footer: Container(
-                            child: Text(
-                              item.price.toString(),
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            decoration:
-                                const BoxDecoration(color: Colors.amber),
-                            padding: const EdgeInsets.all(10.0),
-                          ),
-                        ));
-                  },
-                  itemCount: CatelogModel.items.length,
-                )
-              : const Center(
-                  child: CircularProgressIndicator(),
-                ),
-        ),
-        drawer: MyDrawer(),
-      ),
+      )),
+    );
+  }
+}
+
+class CatelogList extends StatelessWidget {
+  const CatelogList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        final catelog = CatelogModel.items[index];
+        return CatelogItem(catelog: catelog);
+      },
+      itemCount: CatelogModel.items.length,
+    );
+  }
+}
+
+class CatelogItem extends StatelessWidget {
+  final Item catelog;
+
+  const CatelogItem({Key? key, required this.catelog})
+      : assert(catelog != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+//Catelog Header
+class CatelogHeader extends StatelessWidget {
+  const CatelogHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        "Catelog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
+        "Trending Products".text.xl2.make()
+      ],
     );
   }
 }

@@ -5,7 +5,7 @@ class MyTheme {
   static ThemeData LigntTheme(BuildContext context) => ThemeData(
       primarySwatch: Colors.deepOrange,
       fontFamily: GoogleFonts.lato().fontFamily,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.black),
@@ -14,4 +14,9 @@ class MyTheme {
 
   static ThemeData DarkTheme(BuildContext context) =>
       ThemeData(brightness: Brightness.dark);
+
+  //Colors
+  static Color creamColor = Color(0xfff5f5f5);
+
+  static Color darkBluishColor = Color(0xff403b58);
 }
